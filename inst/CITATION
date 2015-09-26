@@ -1,0 +1,17 @@
+citHeader("To cite package 'ltm' in publications use:")
+
+citEntry(entry = "Article",
+         title        = "ltm: An R package for Latent Variable Modelling and Item Response Theory Analyses",
+         author       = personList(as.person("Dimitris Rizopoulos")),
+         journal      = "Journal of Statistical Software",
+         year         = "2006",
+	   volume       = "17",
+	   number       = "5",
+	   pages        = "1--25",
+         url          = "http://www.jstatsoft.org/v17/i05/",
+         
+         textVersion  = paste("Dimitris Rizopoulos (2006).", 
+               "ltm: An R package for Latent Variable Modelling and Item Response Theory Analyses,",
+               "Journal of Statistical Software, 17 (5), 1-25.",
+	         "URL http://www.jstatsoft.org/v17/i05/")
+)
