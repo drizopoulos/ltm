@@ -30,7 +30,7 @@ function (thetas, X, method) {
         betas <- thetas[, 2:3]
         cs <- plogis(thetas[, 1]) * object$max.guessing
         cs.mat <- matrix(cs, nrow(Z), nrow(betas), TRUE)
-        pr <- cs + (1 - cs) * probs(Z %*% t(betas))
+        pr <- cs.mat + (1 - cs.mat) * probs(Z %*% t(betas))
         mX <- 1 - X
         if (any(na.ind <- is.na(X)))
             X[na.ind] <- mX[na.ind] <- 0
