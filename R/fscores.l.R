@@ -55,8 +55,8 @@ function (betas, X, method) {
         if (!is.null(constraint))
             betas <- betas[-((constraint[, 2] - 1) * p + constraint[, 1])]
         var.b <- vcov(object, robust.se)
-        scores.B <- lapply(1:B, array, data = 0, dim = c(nx, factors))
-        hes.B <- lapply(1:B, array, data = 0, dim = c(factors, factors, nx))
+        scores.B <- rep(list(array(data = 0.0, dim = c(nx, factors))), B)
+        hes.B <- rep(list(array(data = 0.0, dim = c(factors, factors, nx))), B)
         for (b in 1:B) {
             betas. <- mvrnorm(1, c(betas), var.b)
             betas. <- betas.ltm(betas., constraint, p, q.)
@@ -69,7 +69,7 @@ function (betas, X, method) {
         }
         scores.av <- matMeans(scores.B)
         hes.av <- matArrays(hes.B)
-        SV <- lapply(1:B, array, data = 0, dim = c(factors, factors, nx))
+        SV <- rep(list(array(data = 0.0, dim = c(factors, factors, nx))), B)
         for (b in 1:B) {
             for (i in 1:nx) {
                 sc.dif <- scores.B[[b]][i, ] - scores.av[i, ]

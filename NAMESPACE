@@ -8,10 +8,21 @@ export(anova.grm, anova.gpcm, anova.ltm, anova.rasch, anova.tpm, biserial.cor, c
 	 tpm, unidimTest, vcov.grm, vcov.gpcm, vcov.ltm, vcov.rasch, vcov.tpm)
 
 # Imported functions
-importFrom("MASS", mvrnorm)
+importFrom("MASS", mvrnorm, ginv)
 importFrom("msm", deltamethod)
 importFrom("polycor", polychor)
-importFrom("stats", anova, coef, fitted, logLik, residuals, simulate, vcov)
+importFrom("grDevices", "palette")
+importFrom("graphics", "abline", "lines", "matplot", "par", "persp",
+             "plot", "points", "stripchart", "text")
+importFrom("stats", "AIC", "as.formula", "binomial", "chisq.test",
+           "complete.cases", "cor", "cor.test", "dbinom", "density",
+           "dnorm", "glm", "glm.fit", "integrate", "median",
+           "model.matrix", "na.exclude", "nlminb", "optim", "pchisq",
+           "plogis", "pnorm", "ppoints", "qchisq", "qlogis",
+           "quantile", "rbinom", "resid", "rlnorm", "rlogis", "rnorm",
+           "runif", "sd", "terms", "update", "var",
+           "anova", "coef", "fitted", "logLik", "residuals", "simulate", "vcov")
+importFrom("utils", "combn", "tail")
 
 # S3 methods
 S3method(anova, gpcm)
@@ -92,6 +103,12 @@ S3method(residuals, rasch)
 S3method(residuals, tpm)
 S3method(simulate, gpcm)
 S3method(simulate, grm)
+S3method(simulate, gpcm)
+S3method(summary, gpcm)
+S3method(summary, grm)
+S3method(summary, ltm)
+S3method(summary, tpm)
+S3method(summary, rasch)
 S3method(vcov, gpcm)
 S3method(vcov, grm)
 S3method(vcov, ltm)
