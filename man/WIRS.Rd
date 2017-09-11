@@ -21,9 +21,6 @@
     \item{Item 6}{Discussions with paid union officials from outside.}
   }
 }
-\source{
-  The WIRS surveys can be found at \url{http://www.niesr.ac.uk/niesr/wers98/}.
-}
 \references{
   Bartholomew, D. (1998) Scaling unobservable constructs in social science. 
   \emph{Applied Statistics}, \bold{47}, 1--13. 

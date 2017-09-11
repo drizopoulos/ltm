@@ -42,8 +42,6 @@ The following options are available:
         of Measurement, Standardized Loadings Scatterplot (for the two-factor latent trait model), Item Operation 
         Characteristic Curves (for ordinal polytomous data), Item Person Maps.}  
 }
-More information as well as R script files containing sample analyses can be found in the Rwiki page of 
-\bold{ltm} available at: \cr \url{http://rwiki.sciviews.org/doku.php?id=packages:cran:ltm}.
 }
 
 \author{
