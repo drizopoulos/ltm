@@ -51,7 +51,7 @@ function (data, n.print = 10, chi.squared = TRUE, B = 1000) {
     levs. <- apply(dat, 2, function (x) length(unique(x)))
     levs <- pmax(2, levs.)
     levs <- if (all(levs == 2)) 0:sum(levs - 1) else p:sum(levs)
-    totSc <- rowSums(X)
+    totSc <- rowSums(X, na.rm = TRUE)
     itms <- rbind(Freq = table( factor(totSc, levels = levs) ))
     out <- list(sample = c(p, n), perc = if (is.matrix(perc)) t(perc) else perc, items = itms, 
                 pw.ass = if (chi.squared) pw.ass else NULL, n.print = n.print, name = nam, missin = missin, data = data)
