@@ -1,3 +1,10 @@
+Changes in version: ltm_1.1-1
+
+  o changed the biserial.cor() to use the population standard deviation.
+
+
+==============================
+
 Changes in version: ltm_1.0-1
 
   o corrected a bug in fscores.t().

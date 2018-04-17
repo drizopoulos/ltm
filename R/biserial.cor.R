@@ -16,5 +16,6 @@ function (x, y, use = c("all.obs", "complete.obs"), level = 1) {
     ind <- y == levs[level]
     diff.mu <- mean(x[ind]) - mean(x[!ind])
     prob <- mean(ind)
-    diff.mu * sqrt(prob * (1 - prob)) / sd(x)
+    sd.pop <- sd(x) * sqrt((length(x) - 1) / length(x))
+    diff.mu * sqrt(prob * (1 - prob)) / sd.pop
 }
