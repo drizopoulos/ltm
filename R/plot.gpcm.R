@@ -1,10 +1,11 @@
 plot.gpcm <-
-function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NULL, 
-                      zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), annot, 
-                      labels = NULL, legend = FALSE, 
-                      cx = "top", cy = NULL, ncol = 1, bty = "n", col = palette(), lty = 1, pch, 
-                      xlab, ylab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-                      cex.main = par("cex.main"), cex.sub = par("cex.sub"), cex.axis = par("cex.axis"), 
+function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NULL,
+                      zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), annot,
+                      labels = NULL, legend = FALSE,
+                      cx = "top", cy = NULL, ncol = 1, bty = "n", col = palette(), lty = 1, pch,
+                      xlab, ylab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"),
+                      cex.main = par("cex.main"), cex.sub = par("cex.sub"), cex.axis = par("cex.axis"),
+                      ask = TRUE,
                       plot = TRUE, ...) {
     if (!inherits(x, "gpcm"))
         stop("Use only with 'gpcm' objects.\n")
@@ -29,7 +30,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
             stop(paste("'category' must be a number between 1 and ", max(ncatg), ".\n", sep = ""))
         if (any(ind <- category > ncatg)){
             if (sum(ind) > 1)
-                warning("Items ", paste(items[ind], collapse = ", "), " are excluded since they have only ", 
+                warning("Items ", paste(items[ind], collapse = ", "), " are excluded since they have only ",
                             paste(ncatg[ind], collapse = ", "), " categories, respectively.\n")
             else
                 warning("Item ", items[ind], " is excluded since they have only ", ncatg[ind], " categories.\n")
@@ -40,7 +41,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
         "all"
     cpr <- switch(type,
         "ICC" = lapply(crf.GPCM(betas, z, x$IRT.param), t),
-        "IIC" = infoGPCM(betas, z, x$IRT.param), 
+        "IIC" = infoGPCM(betas, z, x$IRT.param),
         "OCCl" = lapply(crf.GPCM(betas, z, x$IRT.param), function (x) {
                 pp <- apply(x[-nrow(x), , drop = FALSE], 2, cumsum)
                 if (NCOL(pp) == 1) as.matrix(pp) else t(pp)
@@ -61,7 +62,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
             if (plot.items) "Item Information Curves" else "Test Information Function"
         }
         mis.ind <- TRUE
-    } else 
+    } else
         mis.ind <- FALSE
     if (missing(ylab)) {
         ylab <- if (type == "ICC" || (type == "OCCl" | type == "OCCu")) "Probability" else "Information"
@@ -78,7 +79,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
         if (ctg == "all") {
             if (plot) {
                 if (length(itms) > 1) {
-                    old.par <- par(ask = TRUE)
+                    old.par <- par(ask = ask)
                     on.exit(par(old.par))
                 }
                 one.fig <- prod(par("mfcol")) == 1
@@ -88,7 +89,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
                         main. <- if (one.fig) paste("- Item:", names(cpr)[ii]) else paste("\nItem:", names(cpr)[ii])
                         main <- paste(Main, main.)
                     }
-                    plot(range(z), c(0, 1), type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, 
+                    plot(range(z), c(0, 1), type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex,
                          cex.lab = cex.lab, cex.main = cex.main, cex.axis = cex.axis, cex.sub = cex.sub, ...)
                     p <- cpr[[ii]]
                     pos <- round(seq(10, 90, length = ncol(p)))
@@ -103,7 +104,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
                         if (!missing(pch))
                             points(z[pch.ind], p[pch.ind, j], pch = pch[j], col = col[j], cex = cex, ...)
                         if (annot)
-                            text(z[pos[j]], p[pos[j], j], adj = c(0, 1.2), if (missing(labels)) j else labels[j], 
+                            text(z[pos[j]], p[pos[j], j], adj = c(0, 1.2), if (missing(labels)) j else labels[j],
                                  col = col[j], cex = cex, ...)
                     }
                     if (legend) {
@@ -133,7 +134,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
                     main. <- if (one.fig) paste("- Category:", ctg) else paste("\nCategory:", ctg)
                     main <- paste(Main, main.)
                 }
-                plot(range(z), c(0, 1), type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, 
+                plot(range(z), c(0, 1), type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex,
                      cex.lab = cex.lab, cex.main = cex.main, cex.axis = cex.axis, cex.sub = cex.sub, ...)
                 pos <- round(seq(10, 90, length = ncol(p)))
                 col <- rep(col., length.out = length(itms))
@@ -141,19 +142,19 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
                 if (!missing(pch)) {
                     pch <- rep(pch, length.out = length(itms))
                     pch.ind <- round(seq(15, 85, length = 4))
-                }                   
+                }
                 for (j in 1:ncol(p)) {
                     lines(z, p[, j], lty = lty[j], col = col[j], ...)
                     if (!missing(pch))
                         lines(z, p[, j], pch = pch[j], col = col[j], cex = cex, ...)
                     if (annot)
-                        text(z[pos[j]], p[pos[j], j], adj = c(0, 1.2), if (missing(labels)) colnames(p)[j] else labels[j], 
+                        text(z[pos[j]], p[pos[j], j], adj = c(0, 1.2), if (missing(labels)) colnames(p)[j] else labels[j],
                              col = col[j], cex = cex, ...)
                 }
                 if (legend) {
                     ncol. <- if (is.null(ncol)) {
                         if (any(nchar(colnames(p)) > 11)) 1 else length(items) %/% 2
-                    } else 
+                    } else
                         ncol
                     lab <- if (missing(labels)) colnames(p) else labels
                     legend(cx, cy, legend = lab, lty = lty, pch = pch, col = col, bty = bty, ncol = ncol., cex = cex, ...)
@@ -170,7 +171,7 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
             if (mis.ind) {
                 main <- Main
             }
-            plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, 
+            plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex,
                  cex.lab = cex.lab, cex.main = cex.main, cex.axis = cex.axis, cex.sub = cex.sub, ...)
             if (plot.items) {
                 col <- rep(col., length.out = length(itms))
@@ -185,12 +186,12 @@ function (x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, category = NU
                     if (!missing(pch))
                         points(z[pch.ind], p[pch.ind, i], pch = pch[i], col = col[i], cex = cex, ...)
                     if (annot)
-                        text(z[pos[i]], p[pos[i], i], adj = c(0, 1.2), if (missing(labels)) i else labels[i], 
+                        text(z[pos[i]], p[pos[i], i], adj = c(0, 1.2), if (missing(labels)) i else labels[i],
                              col = col[i], cex = cex, ...)
                 }
                 if (legend) {
                     ncol. <- if (is.null(ncol)) ncol. <- if (nitems > 8) 2 else 1 else ncol
-                    legend(cx, cy, legend = if (missing(labels)) colnames(cpr)[itms] else labels, lty = lty, pch = pch, 
+                    legend(cx, cy, legend = if (missing(labels)) colnames(cpr)[itms] else labels, lty = lty, pch = pch,
                            col = col, bty = bty, ncol = ncol., cex = cex, ...)
                 }
             } else {
