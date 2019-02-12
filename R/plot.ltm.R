@@ -1,9 +1,10 @@
 plot.ltm <-
 function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 3.8),
-                      z = seq(zrange[1], zrange[2], length = 100), annot, 
-                      labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, ncol = 1, bty = "n", 
-                      col = palette(), lty = 1, pch, xlab, ylab, zlab, main, sub = NULL, cex = par("cex"), 
-                      cex.lab = par("cex.lab"), cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
+                      z = seq(zrange[1], zrange[2], length = 100), annot,
+                      labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, ncol = 1, bty = "n",
+                      col = palette(), lty = 1, pch, xlab, ylab, zlab, main, sub = NULL, cex = par("cex"),
+                      cex.lab = par("cex.lab"), cex.main = par("cex.main"), cex.sub = par("cex.sub"),
+                      ask = TRUE,
                       cex.axis = par("cex.axis"), plot = TRUE, ...) {
     if (!inherits(x, "ltm"))
         stop("Use only with 'ltm' objects.\n")
@@ -42,7 +43,7 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
             pch.ind <- round(seq(15, 85, length = 4))
         }
         if (missing(main)) {
-            main <- if (type == "ICC") "Item Characteristic Curves" else { 
+            main <- if (type == "ICC") "Item Characteristic Curves" else {
                 if (plot.items) "Item Information Curves" else "Test Information Function"
             }
         }
@@ -54,7 +55,7 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
         }
         r <- if (type == "ICC") c(0, 1) else { if (plot.info) range(rowSums(pr)) else range(pr[, itms]) }
         if (plot) {
-            plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, 
+            plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex,
                  cex.lab = cex.lab, cex.main = cex.main, cex.axis = cex.axis, cex.sub = cex.sub, ...)
             if (missing(annot)) {
                 annot <- !legend
@@ -67,11 +68,11 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
                         warning("the length of 'labels' is smaller than the length of 'items'.\n")
                     labels
                 }
-                legend(cx, cy, legend = legnd, col = col, lty = lty, bty = bty, ncol = ncol, cex = cex, pch = pch, ...) 
+                legend(cx, cy, legend = legnd, col = col, lty = lty, bty = bty, ncol = ncol, cex = cex, pch = pch, ...)
             }
             if (annot) {
                 pos <- round(seq(10, 90, length = length(itms)))
-                nams <- if (is.null(labels)) { 
+                nams <- if (is.null(labels)) {
                     nms <- if (rownames(betas)[1] == "Item 1") 1:p else rownames(betas)
                     nms[itms]
                 } else {
@@ -86,7 +87,7 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
                     if (!missing(pch))
                         points(z[pch.ind], pr[pch.ind, itms[it]], pch = pch[it], col = col[it], cex = cex, ...)
                     if (annot)
-                        text(z[pos[it]], pr[pos[it], itms[it]], labels = nams[it], adj = c(0, 2), col = col[it], 
+                        text(z[pos[it]], pr[pos[it], itms[it]], labels = nams[it], adj = c(0, 2), col = col[it],
                              cex = cex, ...)
                 }
             }
@@ -145,7 +146,7 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
                 if (missing(main))
                     main <- "Item Characteristic Surfaces"
                 col <- if (missing(col)) rep("white", length.out = length(itms)) else rep(col, length.out = length(itms))
-                old.par <- par(ask = TRUE)
+                old.par <- par(ask = ask)
                 on.exit(par(old.par))
             }
             grid. <- as.matrix(expand.grid(z1, z2))
@@ -156,9 +157,9 @@ function (x, type = c("ICC", "IIC", "loadings"), items = NULL, zrange = c(-3.8, 
                 z[[it]] <- apply(grid., 1, f, betas = betas[item, ], strct = x$ltst)
                 dim(z[[it]]) <- c(length(z1), length(z1))
                 if (plot) {
-                    persp(z1, z2, z[[it]], cex = cex, xlab = list(xlab, cex = cex.lab), 
-                          ylab = list(ylab, cex = cex.lab), zlab = list(zlab, cex = cex.lab), 
-                          main = list(main, cex = cex.main), sub = list(if (is.null(labels)) nams[item] else labels[it], 
+                    persp(z1, z2, z[[it]], cex = cex, xlab = list(xlab, cex = cex.lab),
+                          ylab = list(ylab, cex = cex.lab), zlab = list(zlab, cex = cex.lab),
+                          main = list(main, cex = cex.main), sub = list(if (is.null(labels)) nams[item] else labels[it],
                           cex = cex.sub), col = col[it], ...)
                 }
             }

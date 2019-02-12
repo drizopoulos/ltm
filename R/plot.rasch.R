@@ -1,9 +1,9 @@
 plot.rasch <-
-function (x, type = c("ICC", "IIC"), items = NULL, zrange = c(-3.8, 3.8), 
-                        z = seq(zrange[1], zrange[2], length = 100), annot, 
-                        labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, ncol = 1, bty = "n", col = palette(), 
-                        lty = 1, pch, xlab, ylab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-                        cex.main = par("cex.main"), cex.sub = par("cex.sub"), cex.axis = par("cex.axis"), 
+function (x, type = c("ICC", "IIC"), items = NULL, zrange = c(-3.8, 3.8),
+                        z = seq(zrange[1], zrange[2], length = 100), annot,
+                        labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, ncol = 1, bty = "n", col = palette(),
+                        lty = 1, pch, xlab, ylab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"),
+                        cex.main = par("cex.main"), cex.sub = par("cex.sub"), cex.axis = par("cex.axis"),
                         plot = TRUE, ...) {
     if (!inherits(x, "rasch"))
         stop("Use only with 'rasch' objects.\n")
@@ -37,7 +37,7 @@ function (x, type = c("ICC", "IIC"), items = NULL, zrange = c(-3.8, 3.8),
             pch.ind <- round(seq(15, 85, length = 4))
         }
         if (missing(main)) {
-            main <- if (type == "ICC") "Item Characteristic Curves" else { 
+            main <- if (type == "ICC") "Item Characteristic Curves" else {
                 if (plot.items) "Item Information Curves" else "Test Information Function"
             }
         }
@@ -48,7 +48,7 @@ function (x, type = c("ICC", "IIC"), items = NULL, zrange = c(-3.8, 3.8),
             ylab <- if (type == "ICC") "Probability" else "Information"
         }
         r <- if (type == "ICC") c(0, 1) else { if (plot.info) range(rowSums(pr)) else range(pr[, itms]) }
-        plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, cex.lab = cex.lab, 
+        plot(range(z), r, type = "n", xlab = xlab, ylab = ylab, main = main, sub = sub, cex = cex, cex.lab = cex.lab,
              cex.main = cex.main, cex.axis = cex.axis, cex.sub = cex.sub, ...)
         if (missing(annot)) {
             annot <- !legend
@@ -61,11 +61,11 @@ function (x, type = c("ICC", "IIC"), items = NULL, zrange = c(-3.8, 3.8),
                     warning("the length of 'labels' is smaller than the length of 'items'.\n")
                 labels
             }
-            legend(cx, cy, legend = legnd, col = col, lty = lty, bty = bty, ncol = ncol, cex = cex, pch = pch, ...) 
+            legend(cx, cy, legend = legnd, col = col, lty = lty, bty = bty, ncol = ncol, cex = cex, pch = pch, ...)
         }
         if (annot) {
             pos <- round(seq(10, 90, length = length(itms)))
-            nams <- if (is.null(labels)) { 
+            nams <- if (is.null(labels)) {
                 nms <- if (rownames(betas)[1] == "Item 1") 1:p else rownames(betas)
                 nms[itms]
             } else {
