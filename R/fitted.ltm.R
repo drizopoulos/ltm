@@ -16,13 +16,13 @@ function (object, resp.patterns = NULL,
         p <- ncol(object$X)
         if (ncol(resp.patterns) != p)
             stop("the number of items in ", deparse(substitute(object)), 
-                    " and the number of columns of 'resp.patterns' do not mach.\n")
+                    " and the number of columns of 'resp.patterns' do not match.\n")
         check.items <- vector("logical", p)
         for (i in 1:p)
             check.items[i] <- all(unique(resp.patterns[, i]) %in% c(unique(object$patterns$X[, i]), NA))
         if (!all(check.items)) {
             its <- paste((1:p)[!check.items], collapse = ", ")
-            stop("the number of levels in 'resp.patterns' does not mach for item(s): ", its, "\n")
+            stop("the number of levels in 'resp.patterns' does not match for item(s): ", its, "\n")
         }
         resp.patterns
     }
