@@ -3,12 +3,11 @@ function (start.val, data, factors, formula) {
     n <- nrow(data)
     p <- ncol(data)
     cf <- paste(formula[3])
-    #form <- paste("y ~ ", paste("z", 1:factors, collapse = " + ", sep = ""), " + ", cf)
     form <- paste("y ~ ", cf)
     form <- as.formula(form)
     q. <- length(attr(terms(form), "term.labels")) + 1
-    cmptStrVal <- is.null(start.val) || (start.val == "random" || (all(is.numeric(start.val)) && length(start.val) != p*q.))
     randStrVal <- length(start.val) == 1 && start.val == "random"
+    cmptStrVal <- is.null(start.val) || randStrVal || length(start.val) != p * q.
     if (cmptStrVal) {
         if (randStrVal) {
             Z <- data.frame(z1 = rnorm(n))
@@ -30,7 +29,7 @@ function (start.val, data, factors, formula) {
             Z$y <- data[, i]
             fm <- try(glm(form, family = binomial(), data = Z), silent = TRUE)
             coefs[i, ] <- if (!inherits(fm, "try-error")) {
-                fm$coef
+                fm$coefficients
             } else {
                 c(0, rep(1, q. - 1))
             }

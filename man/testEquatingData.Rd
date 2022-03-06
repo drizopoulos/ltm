@@ -31,11 +31,10 @@ A \code{matrix} containing the common and unique items.
 
 \references{
 Yu, C.-H. and Osborn Popp, S. (2005) Test equating by common items and common subjects: concepts and applications.
-\emph{Practical Assessment Research and Evaluation}, \bold{10(4)}, 1--19. URL 
-\url{http://pareonline.net/getvn.asp?v=10&n=4}
+\emph{Practical Assessment Research and Evaluation}, \bold{10(4)}, 1--19.
 
 Rizopoulos, D. (2006) \bold{ltm}: An R package for latent variable modelling and item response theory analyses. 
-\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \url{http://www.jstatsoft.org/v17/i05/}
+\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \doi{10.18637/jss.v017.i05}
 }
 
 \author{

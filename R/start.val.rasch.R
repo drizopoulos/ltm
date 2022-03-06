@@ -2,8 +2,8 @@ start.val.rasch <-
 function (start.val, data) {
     n <- nrow(data)
     p <- ncol(data)
-    cmptStrVal <- is.null(start.val) || (start.val == "random" || (all(is.numeric(start.val)) && length(start.val) != p+1))
     randStrVal <- length(start.val) == 1 && start.val == "random"
+    cmptStrVal <- is.null(start.val) || randStrVal || length(start.val) != p + 1
     if (cmptStrVal) {
         rs <- as.vector(rowSums(data, na.rm = TRUE))
         len.uni <- length(unique(rs))
@@ -22,7 +22,7 @@ function (start.val, data) {
             z. <- z[na.ind, ]
             fm <- try(glm.fit(z., y., family = binomial()), silent = TRUE)
             coefs[i, ] <- if (!inherits(fm, "try-error")) {
-                fm$coef
+                fm$coefficients
             } else {
                 c(0, 1)
             }

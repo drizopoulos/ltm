@@ -8,10 +8,10 @@ citEntry(entry = "Article",
 	   volume       = "17",
 	   number       = "5",
 	   pages        = "1--25",
-         url          = "http://www.jstatsoft.org/v17/i05/",
+         url          = "https://doi.org/10.18637/jss.v017.i05",
          
          textVersion  = paste("Dimitris Rizopoulos (2006).", 
                "ltm: An R package for Latent Variable Modelling and Item Response Theory Analyses,",
                "Journal of Statistical Software, 17 (5), 1-25.",
-	         "URL http://www.jstatsoft.org/v17/i05/")
+	         "URL https://doi.org/10.18637/jss.v017.i05")
 )

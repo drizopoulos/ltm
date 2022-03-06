@@ -2,8 +2,8 @@ start.val.tpm <-
 function (start.val, data, type, constraint) {
     n <- nrow(data)
     p <- ncol(data)
-    cmptStrVal <- is.null(start.val) || (start.val == "random" || (is.matrix(start.val) && length(start.val) != 3*p))
     randStrVal <- length(start.val) == 1 && start.val == "random"
+    cmptStrVal <- is.null(start.val) || randStrVal || length(start.val) != 3 * p
     if (cmptStrVal) {
         rs <- as.vector(rowSums(data, na.rm = TRUE))
         len.uni <- length(unique(rs))

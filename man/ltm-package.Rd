@@ -18,8 +18,8 @@ Random missing data mechanisms.
 \tabular{ll}{
 Package: \tab ltm\cr
 Type: \tab Package\cr
-Version: \tab 1.1-2\cr
-Date: \tab 2019-02-26\cr
+Version: \tab 1.2-0\cr
+Date: \tab 2022-02-18\cr
 License: \tab \acronym{GPL} \cr
 }
 The following options are available:
@@ -55,7 +55,7 @@ Baker, F. and Kim, S-H. (2004) \emph{Item Response Theory}, 2nd ed.
 New York: Marcel Dekker.
 
 Rizopoulos, D. (2006) \bold{ltm}: An R package for latent variable modelling and item response theory analyses. 
-\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \url{http://www.jstatsoft.org/v17/i05/}
+\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \doi{10.18637/jss.v017.i05}
 }
 
 \keyword{ package }

@@ -24,7 +24,7 @@ function (object, B = 49, ...) {
         X
     }
     constraint <- object$constraint
-    betas <- object$coef
+    betas <- object$coefficients
     betas <- c(betas[, -2], betas[1, 2])
     if (!is.null(constraint))
         betas <- betas[-constraint[, 1]]
@@ -39,7 +39,8 @@ function (object, B = 49, ...) {
         X <- rmvlogis(betas.)
         if (nas)
             X[na.ind] <- NA
-        Ts[i] <- pearson.chi(rasch(X, constraint = constraint, start.val = c(betas.[, 1], betas.[1, 2]), 
+        Ts[i] <- pearson.chi(rasch(X, constraint = constraint, 
+                                   start.val = c(betas.[, 1], betas.[1, 2]), 
                                     control = object$control))
     }
     p.val <- (1 + sum(Ts >= Tobs)) / (B + 1)

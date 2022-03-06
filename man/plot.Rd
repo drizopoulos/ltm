@@ -12,47 +12,50 @@
 }
 
 \usage{
-\method{plot}{gpcm}(x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, 
-     category = NULL, zrange = c(-3.8, 3.8), 
-     z = seq(zrange[1], zrange[2], length = 100), annot, 
-     labels = NULL, legend = FALSE, cx = "top", cy = NULL, ncol = 1, 
-     bty = "n", col = palette(), lty = 1, pch, xlab, ylab, main, 
-     sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-     cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
-     cex.axis = par("cex.axis"), plot = TRUE, \dots)
+\method{plot}{gpcm}(x, type = c("ICC", "IIC", "OCCu", "OCCl"), 
+    items = NULL, category = NULL, zrange = c(-3.8, 3.8), 
+    z = seq(zrange[1], zrange[2], length = 100), annot,
+    labels = NULL, legend = FALSE, cx = "top", cy = NULL, ncol = 1, 
+    bty = "n", col = palette(), lty = 1, pch, xlab, ylab, main, sub = NULL, 
+    cex = par("cex"), cex.lab = par("cex.lab"), cex.main = par("cex.main"), 
+    cex.sub = par("cex.sub"), cex.axis = par("cex.axis"), ask = TRUE,
+    plot = TRUE, \dots)
 
-\method{plot}{grm}(x, type = c("ICC", "IIC", "OCCu", "OCCl"), items = NULL, 
-     category = NULL, zrange = c(-3.8, 3.8), 
-     z = seq(zrange[1], zrange[2], length = 100), annot, 
-     labels = NULL, legend = FALSE, cx = "top", cy = NULL, ncol = 1, 
-     bty = "n", col = palette(), lty = 1, pch, xlab, ylab, main, 
-     sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-     cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
-     cex.axis = par("cex.axis"), plot = TRUE, \dots)
+\method{plot}{grm}(x, type = c("ICC", "IIC", "OCCu", "OCCl"), 
+    items = NULL, category = NULL, zrange = c(-3.8, 3.8), 
+    z = seq(zrange[1], zrange[2], length = 100), annot,
+    labels = NULL, legend = FALSE,
+    cx = "top", cy = NULL, ncol = 1, bty = "n", col = palette(), lty = 1, pch,
+    xlab, ylab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"),
+    cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
+    cex.axis = par("cex.axis"), ask = TRUE, plot = TRUE, \dots)
 
-\method{plot}{ltm}(x, type = c("ICC", "IIC", "loadings"), items = NULL, 
-     zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), 
-     annot, labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
-     ncol = 1, bty = "n", col = palette(), lty = 1, pch, xlab, ylab, 
-     zlab, main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-     cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
-     cex.axis = par("cex.axis"), plot = TRUE, \dots)
+\method{plot}{ltm}(x, type = c("ICC", "IIC", "loadings"), 
+    items = NULL, zrange = c(-3.8, 3.8),
+    z = seq(zrange[1], zrange[2], length = 100), annot,
+    labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
+    ncol = 1, bty = "n", col = palette(), lty = 1, pch, xlab, 
+    ylab, zlab, main, sub = NULL, cex = par("cex"),
+    cex.lab = par("cex.lab"), cex.main = par("cex.main"), 
+    cex.sub = par("cex.sub"), ask = TRUE,
+    cex.axis = par("cex.axis"), plot = TRUE, \dots)
 
 \method{plot}{rasch}(x, type = c("ICC", "IIC"), items = NULL, 
-     zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), 
-     annot, labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
-     ncol = 1, bty = "n", col = palette(), lty = 1, pch, xlab, ylab, 
-     main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-     cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
-     cex.axis = par("cex.axis"), plot = TRUE, \dots)
+    zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), 
+    annot, labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
+    ncol = 1, bty = "n", col = palette(), lty = 1, pch, xlab, ylab, 
+    main, sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"),
+    cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
+    cex.axis = par("cex.axis"), plot = TRUE, \dots)
 
 \method{plot}{tpm}(x, type = c("ICC", "IIC"), items = NULL, 
-     zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), 
-     annot, labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
-     ncol = 1, bty = "n", col = palette(), lty = 1, pch, xlab, ylab, main, 
-     sub = NULL, cex = par("cex"), cex.lab = par("cex.lab"), 
-     cex.main = par("cex.main"), cex.sub = par("cex.sub"), 
-     cex.axis = par("cex.axis"), plot = TRUE, \dots)
+    zrange = c(-3.8, 3.8), z = seq(zrange[1], zrange[2], length = 100), 
+    annot, labels = NULL, legend = FALSE, cx = "topleft", cy = NULL, 
+    ncol = 1, bty = "n", col = palette(), lty = 1, 
+    pch, xlab, ylab, main, sub = NULL, cex = par("cex"), 
+    cex.lab = par("cex.lab"), cex.main = par("cex.main"), 
+    cex.sub = par("cex.sub"), cex.axis = par("cex.axis"), 
+    plot = TRUE, \dots)
 }
 \arguments{
   \item{x}{ an object inheriting either from class \code{gpcm}, class \code{grm}, class \code{ltm}, class \code{rasch} or class \code{tpm}. }
@@ -74,7 +77,7 @@
                     the \code{x} and \code{y} arguments of \code{\link{legend}}. }
   \item{col, lty, pch}{ control values, see \code{\link{par}}; recycling is used if necessary. }
   \item{xlab, ylab, zlab, main, sub}{ character string or an \code{\link{expression}}; see \code{\link{title}}. }
-  \item{cex, cex.lab, cex.main, cex.sub, cex.axis}{ the cex family of argument; see \code{\link{par}}. }
+  \item{cex, cex.lab, cex.main, cex.sub, cex.axis, ask}{ the cex family of argument; see \code{\link{par}}. }
   \item{plot}{logical; if \code{TRUE} the plot(s) is(are) produced otherwise only the values used to create the plot(s)
                 are returned.}
   \item{\dots}{ extra graphical parameters to be passed to \code{plot()}, \code{lines()}, \code{legend()} and 

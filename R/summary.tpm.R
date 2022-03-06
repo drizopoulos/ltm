@@ -4,7 +4,7 @@ function (object, ...) {
         stop("Use only with 'tpm' objects.\n")
     if (object$IRT.param)
         irt <- IRT.parm(object, TRUE)
-    coefs <- if (object$IRT.param) irt$parms else object$coef
+    coefs <- if (object$IRT.param) irt$parms else object$coefficients
     coefs[, 1] <- plogis(coefs[, 1]) * object$max.guessing
     Var.betas <- vcov(object)
     coefs <- if (object$type == "rasch") c(coefs[, 1:2], coefs[1, 3]) else c(coefs) 
@@ -16,7 +16,7 @@ function (object, ...) {
     coef.tab <- cbind(value = coefs, std.err = se, z.vals = coefs / se)
     p <- ncol(object$X)
     nams <- if (object$IRT) {
-         c(t(outer(colnames(irt$parms), rownames(object$coef), paste, sep = ".")))
+         c(t(outer(colnames(irt$parms), rownames(object$coefficients), paste, sep = ".")))
     } else {
         as.vector(t(outer(c("c.", "beta.1", "beta.2"), as.character(1:p), paste, sep = ""))) 
     }

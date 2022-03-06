@@ -16,7 +16,7 @@ function (formula, constraint = NULL, IRT.param, start.val = NULL, na.action = N
     factors <- sum(av %in% c("z1", "z2"))
     if (factors > 2)
         stop("\nMaximum number of factors to include is 2.")
-    if ((factors == 1 & !"z1" %in% av) || (factors == 2 & !c("z1", "z2") %in% av))  
+    if ((factors == 1 & !"z1" %in% av) || (factors == 2 & !all(c("z1", "z2") %in% av)))  
         stop("\nyou have to use 'z1' for the first factor and 'z2' for the second one.")
     tm.lab <- attr(tm, "term.labels")
     ltst <- list(factors = factors, inter = "z1:z2" %in% tm.lab, quad.z1 = "I(z1^2)" %in% tm.lab, 

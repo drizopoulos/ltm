@@ -142,7 +142,7 @@ Moustaki, I. and Knott, M. (2000) Generalized latent trait
 models. \emph{Psychometrika}, \bold{65}, 391--411.
 
 Rizopoulos, D. (2006) \bold{ltm}: An R package for latent variable modelling and item response theory analyses. 
-\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \url{http://www.jstatsoft.org/v17/i05/}
+\emph{Journal of Statistical Software}, \bold{17(5)}, 1--25. URL \doi{10.18637/jss.v017.i05}
 
 Rizopoulos, D. and Moustaki, I. (2008) Generalized latent variable models
 with nonlinear effects. \emph{British Journal of Mathematical and Statistical Psychology}, \bold{61}, 415--438.
